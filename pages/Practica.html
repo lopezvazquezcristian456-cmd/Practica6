@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/prac.css">
+        <title> Práctica </title>
+    </head>
+    <body>
+        <!-- Menú -->
+        <nav class="menu">
+            <div class="titulop"> Formularios </div>
+            <ul>
+                <li> <a href="../index.html"> Inicio </a> </li>
+                <li> <a href="./concepto.html"> Concepto </a> </li>
+                <li> <a href="./etiquetas.html"> Etiquetas </a> </li>
+                <li> <a href="./Practica.html"> Practica </a> </li>
+            </ul>
+        </nav>
+        <!-- Formulario  -->
+        <section class="practica-fondo">
+            <div class="practica-container">
+                <form action="#" method="POST" id="practicaForm">
+                    <fieldset>
+                        <legend>Registro de Usuario</legend>
+
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre">
+
+                        <label for="correo">Correo:</label>
+                        <input type="email" id="correo" name="correo">
+
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje"></textarea>
+
+                        <label for="pais">País:</label>
+                        <select name="pais" id="pais">
+                            <option value="mx">México</option>
+                            <option value="co">Colombia</option>
+                        </select>
+
+                        <button type="submit">Enviar</button>
+                        <div id="formMessage" class="form-message"
+                            aria-live="polite"></div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+        <script>
+        (function(){
+            const form = document.getElementById('practicaForm');
+            const msg = document.getElementById('formMessage');
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                const nombre = (document.getElementById('nombre')||{}).value || '';
+                const correo = (document.getElementById('correo')||{}).value || '';
+                const mensaje = (document.getElementById('mensaje')||{}).value || '';
+                const pais = (document.getElementById('pais')||{}).value || '';
+                if(!nombre.trim() || !correo.trim() || !mensaje.trim() || !pais.trim()){
+                    msg.textContent = 'Por favor completa todos los campos.';
+                    msg.className = 'form-message error';
+                    return;
+                }
+                msg.textContent = 'Formulario enviado exitosamente.';
+                msg.className = 'form-message success';
+                form.reset();
+            });
+        })();
+    </script>
+
+    </body>
+
+</html>
